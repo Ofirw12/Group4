@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Friends</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<nav>
+    <img class="logo" src="images/BudgetBunny.png" alt="Budget Bunny logo">
+    <a href="/home.html">Home</a>
+    <a href="/wisdoms.html">Wisdoms</a>
+    <a href="{{}}url_for(new_budget)}}">New Budget</a>
+</nav>
+
+<h1>My Friends</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th scope="col">Email</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Friends Since</th>
+    </tr>
+    </thead>
+    <tbody>
+<tr>
+    <td>moshetheking5@gmail.com</td>
+    <td>Moshe</td>
+    <td>Simha</td>
+    <td>2005</td>
+</tr>
+    <tr>
+    <td>ItzikKL@yahoo.com</td>
+    <td>Itzik</td>
+    <td>Kalahani</td>
+    <td>2023</td>
+</tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <th scope="row" colspan="3">Total friends</th>
+        <td>2</td>
+    </tr>
+    </tfoot>
+</table>
+
+<form action="" class="form register">
+<h2>Add Friend</h2>
+    <div class="form-group">
+        <label for="">Email</label>
+        <input type="email" name="email" required>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Search">
+    </div>
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th scope="col">Email</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Accept/Deny</th>
+    </tr>
+    </thead>
+    <tbody>
+<tr>
+    <td>Hanisroom@gmail.com</td>
+    <td>Hani</td>
+    <td>Nahmias</td>
+    <td>
+        <form action="">
+            <select name="response" id="">
+                <option value="confirm">V</option>
+                <option value="deny">X</option>
+            </select>
+            <input type="submit">
+        </form>
+    </td>
+</tr>
+    <tr>
+    <td>nicebutterfly@gmail.com</td>
+    <td>Dudu</td>
+    <td>Zar</td>
+    <td>
+                <form action="">
+            <select name="response" id="">
+                <option value="confirm">V</option>
+                <option value="deny">X</option>
+            </select>
+            <input type="submit">
+        </form>
+    </td>
+</tr>
+    </tbody>
+</table>
+
+</body>
+</html>
