@@ -9,15 +9,14 @@
 
 <nav>
     <ul>
-    <li> <img class="logo" src="images/BudgetBunny.png" alt="Budget Bunny logo"></li>
-    <li> <a href="/friends.html">Friends</a></li>
+        <li><img class="logo" src="images/BudgetBunny.png" alt="Budget Bunny logo"></li>
+        <li><a href="/friends.html">Friends</a></li>
+        <li><a href="/logout.html" >Logout</a></li>
     </ul>
 </nav>
-<h1>Homepage</h1>
-
-
 <label for="" id="date"></label>
-<label for="" id="welcomeLabel">Welcome</label>
+
+<h1>Welcome</h1>
 
 <form action="" class="form register">
     <div class="form-group">
@@ -33,10 +32,8 @@
     </div>
 </form>
 
-<a href="{{url_for('new_Budget')}}" class="btn">Add a new budget</a>
-
-<button onclick="{{url_for('logout')}}" class="btn">Logout</button>
-<button onclick="{{url_for('wisdoms')}}" class="btn">Wisdoms</button>
+<a href="/newBudget.html" class="btn">Add a new budget</a>
+<a href="/wisdoms.html" class="btn">Wisdoms</a>
 
 <script src="home.js"></script>
 </body>
