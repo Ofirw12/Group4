@@ -6,23 +6,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <nav>
     <ul>
         <li><img class="logo" src="images/BudgetBunny.png" alt="Budget Bunny logo"></li>
-        <li><a href="/home.html">HOME</a></li>
-        <li><a href="/wisdoms.html">WISDOMS</a></li>
-        <li><a href="/newBudget.html">NEW BUDGET</a></li>
-        <li><a href="/logout.html">LOGOUT</a></li>
+        <li><a href="home.html">HOME</a></li>
+        <li><a href="wisdoms.html">WISDOMS</a></li>
+        <li><a href="newBudget.html">NEW BUDGET</a></li>
+        <li><a href="logout.html">LOGOUT</a></li>
 
     </ul>
 </nav>
 
 <h1>My Friends</h1>
 
-<table>
+<table class="my-friends-list">
     <thead>
     <tr>
         <th scope="col">Email</th>
@@ -32,13 +32,13 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
+    <tr class="friendRow">
         <td>moshetheking5@gmail.com</td>
         <td>Moshe</td>
         <td>Simha</td>
         <td>2005</td>
     </tr>
-    <tr>
+    <tr class="friendRow">
         <td>ItzikKL@yahoo.com</td>
         <td>Itzik</td>
         <td>Kalahani</td>
@@ -48,7 +48,7 @@
     <tfoot>
     <tr>
         <td colspan="3">Total friends</td>
-        <td>2</td>
+        <td id="total">2</td>
     </tr>
     </tfoot>
 </table>
