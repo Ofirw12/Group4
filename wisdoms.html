@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Wisdoms</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
 <nav>
     <ul>
         <li><img class="logo" src="images/BudgetBunny.png" alt="Budget Bunny logo"></li>
-        <li><a href="/home.html">Home</a></li>
-        <li><a href="/friends.html">Friends</a></li>
-        <li><a href="/logout.html" >Logout</a></li>
+        <li><a href="/home.html">HOME</a></li>
+        <li><a href="/friends.html">FRIENDS</a></li>
+        <li><a href="/logout.html">LOGOUT</a></li>
 
     </ul>
 </nav>
@@ -44,25 +47,25 @@
         <td>Shopping</td>
         <td>Shoes</td>
         <td>01/02/2024</td>
-        <td>300</td>
+        <td class="price">300</td>
     </tr>
     <tr>
         <td>Shopping</td>
         <td>Dress</td>
         <td>01/02/2024</td>
-        <td>852</td>
+        <td class="price">852</td>
     </tr>
     <tr>
         <td>Shopping</td>
         <td>Coffee</td>
         <td>01/02/2024</td>
-        <td>15</td>
+        <td class="price">15</td>
     </tr>
     </tbody>
     <tfoot>
     <tr>
         <td colspan="3">Total</td>
-        <td>8000000000</td>
+        <td id="totalPrice">80000000</td>
     </tr>
     </tfoot>
 </table>
@@ -70,5 +73,7 @@
 <label for="">You've spent 11% more than last month</label><br>
 <label for="">In the last year you've spent 30% more than the average</label><br>
 <label for="">Last month spending was 20% less than your friend Mika</label><br>
+
+<script src="wisdoms.js"></script>
 </body>
 </html>
