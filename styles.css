@@ -2,11 +2,9 @@ body {
     text-align: center;
     background: #80BCBD;
     font-family: 'Raleway', sans-serif;
-
-
 }
 
-
+/*Navbar styling*/
 nav {
     display: flex;
 
@@ -27,44 +25,38 @@ nav a:hover {
 
 nav li {
     float: left;
-
 }
 
 nav ul {
     list-style-type: none;
     margin: 0 auto;
     padding: 0;
-
-
 }
 
 nav li a {
     text-decoration: none;
     color: #000;
     font-weight: bold;
-    display: block;
-    padding-top: 25px;
-
-}
-
-nav li a:hover {
-
+    display: inline-block;
+    padding: 20px 20px;
+    height: 20px;
 }
 
 .logo {
     text-align: left;
     display: inline-block;
     position: relative;
-    width: 70px;
-    height: auto;
+    height: 60px;
+    width: auto;
 }
 
+/*Form styling*/
 .form {
     padding: 20px;
 }
 
-.form-group {
-    padding-bottom: 15px;
+input[type="submit"].btn {
+    font-size: medium;
 }
 
 .form label {
@@ -77,12 +69,15 @@ nav li a:hover {
     padding: 8px;
     width: 30%;
     background-color: #D5F0C1;
+    font-family: 'Raleway', sans-serif;
+
 }
 
 .form select {
     padding: 8px;
     width: 31%;
     background-color: #D5F0C1;
+    font-family: 'Raleway', sans-serif;
 }
 
 .form input[type="submit"] {
@@ -97,6 +92,10 @@ nav li a:hover {
     background-color: #D5F0C1;
 }
 
+.form-group {
+    padding-bottom: 15px;
+}
+
 .form-group input[type="submit"] {
     background-color: #f9f7c9;
     color: #000;
@@ -105,6 +104,20 @@ nav li a:hover {
     width: 100px;
     border-radius: 10px;
 }
+
+.quick-form select {
+    padding: 3px;
+    width: auto;
+}
+
+.filter input[type="submit"] {
+    background-color: #f9f7c9;
+    color: #000;
+    padding: 5px 5px;
+    border: none;
+}
+
+/*Button styling*/
 
 .btn {
     background-color: #f9f7c9;
@@ -120,29 +133,13 @@ nav li a:hover {
     background-color: #D5F0C1;
 }
 
-.quick-form select {
-    padding: 8px;
-    background-color: #D5F0C1;
-}
-
-.quick-form input[type="submit"] {
-    background-color: #f9f7c9;
-    color: #000;
-    padding: 5px 5px;
-    border: none;
-}
-
-.quick-form input[type="submit"]:hover {
-    background-color: #D5F0C1;
-}
-
+/*Date styling*/
 #date {
     float: left;
-    margin-left: auto;
-    margin-right: auto;
     width: 80px;
-
 }
+
+/*Table styling*/
 
 table, th, td {
     border: 1px solid black;
@@ -152,7 +149,6 @@ table, th, td {
 table {
     margin: 0 auto;
     border: 2px solid;
-
 }
 
 table th {
@@ -164,6 +160,8 @@ table td {
     margin: 0;
     background-color: #a9e4e5;
     padding: 10px;
+}
 
-
+td .quick-form {
+    padding: 0;
 }
