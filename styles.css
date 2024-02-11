@@ -165,3 +165,19 @@ table td {
 td .quick-form {
     padding: 0;
 }
+
+/*Animation styling*/
+
+.welcome-animation {
+    animation-name: welcome-animation;
+    animation-duration: 4s;
+}
+
+@keyframes welcome-animation {
+     0% {
+         opacity: 0;
+     }
+  100% {
+      opacity: 1;
+  }
+}
