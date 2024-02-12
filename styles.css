@@ -174,10 +174,24 @@ td .quick-form {
 }
 
 @keyframes welcome-animation {
-     0% {
-         opacity: 0;
-     }
-  100% {
-      opacity: 1;
-  }
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media (min-width: 1000px) {
+    body {
+        font-size: x-large;
+    }
+
+    table {
+        margin: 0 auto;
+        border: 2px solid;
+        padding: 10px;
+    }
+
+
 }
