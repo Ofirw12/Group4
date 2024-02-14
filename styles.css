@@ -1,13 +1,15 @@
 body {
     text-align: center;
     background: #80BCBD;
+    background-image: url("https://transparenttextures.com/patterns/cubes.png");
     font-family: 'Raleway', sans-serif;
 }
 
 /*Navbar styling*/
 nav {
     display: flex;
-
+    align-items: center;
+    justify-content: center;
 }
 
 nav a {
@@ -15,8 +17,6 @@ nav a {
     color: #000;
     font-weight: bold;
     padding: 10px 15px;
-
-
 }
 
 nav a:hover {
@@ -39,14 +39,13 @@ nav li a {
     font-weight: bold;
     display: inline-block;
     padding: 20px 20px;
-    height: 20px;
 }
 
 .logo {
     text-align: left;
     display: inline-block;
     position: relative;
-    height: 60px;
+    height: 59px;
     width: auto;
 }
 
@@ -198,15 +197,31 @@ td .quick-form {
 
 /*@media styling*/
 
-@media (max-width: 550px){
-nav{
-    font-size: small;
+@media (max-width: 550px) {
+    nav {
+        font-size: small;
+    }
+    .logo{
+      height: 55px;
+    }
+    .grid-container a {
+    grid-column: span 2;
+        margin-bottom: 20px;
+
+
 }
+    .form{
+        padding-bottom: 5px;
+    }
+
 }
 
 @media (min-width: 1000px) {
     body {
         font-size: x-large;
+    }
+        .logo{
+      height: 69px;
     }
 
     table {

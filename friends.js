@@ -1,14 +1,56 @@
-const selectElement = document.querySelector('.confirm-deny');
+const responses = document.querySelectorAll('.confirm-deny');
+const form = document.querySelector('.quick-form')
+const friendsList = document.querySelector('.my-friends-list')
 
-selectElement.addEventListener('change', (e) => this.form.submit());
-
-const friendsList = document.querySelector('my-friends-list')
-const countOfFriends = document.getElementById('total')
-const rows = document.querySelectorAll('.friendRow')
-const count = () =>{
+class Friend {
+    constructor(email, fName, lName, friendsSince) {
+        this.email = email;
+        this.fName = fName;
+        this.lName = lName;
+        this.friendsSince = friendsSince;
+    }
+}
+const count = () => {
+    const countOfFriends = document.getElementById('total')
+    const rows = document.querySelectorAll('.friendRow')
     let total = 0;
     rows.forEach((row) => total += 1);
-    return total;
+    countOfFriends.textContent = total;
 }
 
-countOfFriends.textContent = count();
+let friends = [
+    new Friend('moshetheking5@gmail.com', 'Moshe', 'Simha', 2005),
+    new Friend('ItzikKL@yahoo.com', 'Itzik', 'Kalahani', 2023)
+]
+friends.forEach((friend) => {
+    const newRow = friendsList.insertRow(1)
+    newRow.classList.add("friendRow")
+    newRow.insertCell(0).textContent = friend.email;
+    newRow.insertCell(1).textContent = friend.fName;
+    newRow.insertCell(2).textContent = friend.lName;
+    newRow.insertCell(3).textContent = friend.friendsSince
+})
+
+
+responses.forEach((response) => {
+    response.addEventListener('change', (e) => {
+        e.preventDefault();
+        const row = response.closest('tr');
+        friendsList.insertRow(1)
+        if (e.target.value === 'confirm') {
+            const newFriend = new Friend(row.cells[0].textContent, row.cells[1].textContent, row.cells[2].textContent, new Date().getFullYear());
+            friends.push(newFriend);
+            const newRow = friendsList.insertRow(1);
+            newRow.classList.add("friendRow")
+            newRow.insertCell(0).textContent = newFriend.email;
+            newRow.insertCell(1).textContent = newFriend.fName;
+            newRow.insertCell(2).textContent = newFriend.lName;
+            newRow.insertCell(3).textContent = newFriend.friendsSince;
+            row.remove();
+            count();
+        } else if (e.target.value === 'deny') {
+            row.remove();
+        }
+    });
+})
+
