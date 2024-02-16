@@ -201,16 +201,19 @@ td .quick-form {
     nav {
         font-size: small;
     }
-    .logo{
-      height: 55px;
+
+    .logo {
+        height: 55px;
     }
+
     .grid-container a {
-    grid-column: span 2;
+        grid-column: span 2;
         margin-bottom: 20px;
 
 
-}
-    .form{
+    }
+
+    .form {
         padding-bottom: 5px;
     }
 
@@ -220,8 +223,9 @@ td .quick-form {
     body {
         font-size: x-large;
     }
-        .logo{
-      height: 69px;
+
+    .logo {
+        height: 69px;
     }
 
     table {
@@ -269,5 +273,15 @@ td .quick-form {
     /*!*grid-row: 3 / 4;*!*/
     /*text-align: center ;*/
     justify-self: center;
+
+}
+
+/*Validation Messages*/
+.msg {
+    white-space: pre-wrap;
+}
+
+.msg-error {
+    background-color: red;
 
 }

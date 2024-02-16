@@ -32,6 +32,7 @@ const addRows=(list)=>{
     newRow.insertCell(2).textContent = friend.lName;
     newRow.insertCell(3).textContent = friend.friendsSince
 })
+    count();
 }
 addRows(friends);
 

@@ -8,6 +8,16 @@ let users = [
         'password': '11111aA!'
     }
 ]
+const sendMessage = (message) => {
+    const msg = document.querySelector(".msg")
+    msg.textContent = message;
+    msg.classList.add("msg-error")
+    setTimeout(() => {
+        msg.classList.remove('msg-error')
+        msg.textContent = ''
+    }, 4000)
+
+}
 
 const form = document.querySelector('form.login')
 
@@ -23,6 +33,7 @@ form.addEventListener('submit', (e) => {
         }
     })
     if (!userMatch){
-            alert("Please check your email and password and try again.")
+        const message = "Please check your email and password and try again.";
+        sendMessage(message);
     }
 })
