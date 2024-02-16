@@ -25,15 +25,15 @@
 <label>Expenses By Category</label>
 <form action="" class="quick-form form filter">
     <div class="form-group">
-        <select name="gender" id="" required>
-            <option value="education">Education</option>
-            <option value="shopping">Shopping</option>
-            <option value="bills">Bills</option>
+        <select name="expenseType" id="" required>
+            <option value="Education">Education</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Bills">Bills</option>
         </select>
         <input type="submit" value="Filter">
     </div>
 </form>
-<table>
+<table class ="expenses">
     <thead>
     <tr>
         <th scope="col">Category</th>
@@ -43,29 +43,11 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td>Shopping</td>
-        <td>Shoes</td>
-        <td>01/02/2024</td>
-        <td class="price">300</td>
-    </tr>
-    <tr>
-        <td>Shopping</td>
-        <td>Dress</td>
-        <td>01/02/2024</td>
-        <td class="price">852</td>
-    </tr>
-    <tr>
-        <td>Shopping</td>
-        <td>Coffee</td>
-        <td>01/02/2024</td>
-        <td class="price">15</td>
-    </tr>
     </tbody>
     <tfoot>
     <tr>
         <td colspan="3">Total</td>
-        <td id="totalPrice">80000000</td>
+        <td id="totalPrice"></td>
     </tr>
     </tfoot>
 </table>

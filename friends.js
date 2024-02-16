@@ -22,7 +22,9 @@ let friends = [
     new Friend('moshetheking5@gmail.com', 'Moshe', 'Simha', 2005),
     new Friend('ItzikKL@yahoo.com', 'Itzik', 'Kalahani', 2023)
 ]
-friends.forEach((friend) => {
+
+const addRows=(list)=>{
+    list.forEach((friend) => {
     const newRow = friendsList.insertRow(1)
     newRow.classList.add("friendRow")
     newRow.insertCell(0).textContent = friend.email;
@@ -30,7 +32,8 @@ friends.forEach((friend) => {
     newRow.insertCell(2).textContent = friend.lName;
     newRow.insertCell(3).textContent = friend.friendsSince
 })
-
+}
+addRows(friends);
 
 responses.forEach((response) => {
     response.addEventListener('change', (e) => {
@@ -40,12 +43,11 @@ responses.forEach((response) => {
         if (e.target.value === 'confirm') {
             const newFriend = new Friend(row.cells[0].textContent, row.cells[1].textContent, row.cells[2].textContent, new Date().getFullYear());
             friends.push(newFriend);
-            const newRow = friendsList.insertRow(1);
-            newRow.classList.add("friendRow")
-            newRow.insertCell(0).textContent = newFriend.email;
-            newRow.insertCell(1).textContent = newFriend.fName;
-            newRow.insertCell(2).textContent = newFriend.lName;
-            newRow.insertCell(3).textContent = newFriend.friendsSince;
+            const friendRows =document.querySelectorAll('.friendRow');
+            friendRows.forEach((friend)=>{
+                friend.remove();
+            })
+            addRows(friends);
             row.remove();
             count();
         } else if (e.target.value === 'deny') {
