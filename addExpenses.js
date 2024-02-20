@@ -44,3 +44,8 @@ form.addEventListener('submit', (e) => {
         form.submit();
     }
 })
+
+window.addEventListener("load", (e)=>{
+    const budgetTitle =document.querySelector('.budget-name');
+    budgetTitle.textContent=JSON.parse(localStorage.getItem('budgetName'));
+})
