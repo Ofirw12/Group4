@@ -3,6 +3,9 @@ from flask import Flask, render_template, request, redirect, url_for, session
 app = Flask(__name__)
 app.secret_key = 'blablabla'
 
+# will be replaced with sql later
+budgets = ["October 2023", "February 2024", "Thailand 2025"]
+
 @app.route("/")
 def home():
     session["pagename"] = 'home'
@@ -10,7 +13,7 @@ def home():
     if request.args.get('Budget'):
         budget = request.args.get('Budget')
         return redirect(url_for('addExpenses', budget=budget))
-    return render_template("home.html")
+    return render_template("home.html", budgets=budgets)
 
 
 @app.route('/friends')
@@ -19,9 +22,13 @@ def friends():
     return render_template("friends.html")
 
 
-@app.route('/new_budget')
+@app.route('/new_budget', methods=['GET', 'POST'])
 def newBudget():
     session['pagename'] = 'newBudget'
+    if request.method == "POST":
+        newbudget = request.form.get('budgetName')
+        budgets.append(newbudget)
+        return redirect(url_for('home'))
     return render_template("newBudget.html")
 
 
@@ -46,6 +53,7 @@ def register():
 def addExpenses(budget):
     session['pagename'] = 'addExpenses'
     return render_template('addExpenses.html', budget=budget)
+
 
 @app.route('/wisdoms')
 def wisdoms():

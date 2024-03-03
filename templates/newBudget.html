@@ -2,7 +2,7 @@
 {% block title %}New Budget{% endblock %}
 {% block content%}
 <h1>New Budget</h1>
-<form action="" class="form newBudget">
+<form action="{{url_for('newBudget')}}" method="POST" class="form newBudget">
     <div class="msg "></div>
     <div class="form-group">
         <label for="">Budget Name</label>

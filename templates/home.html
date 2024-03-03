@@ -9,9 +9,9 @@
         <div class="form-group">
             <label for="">Choose Budget</label>
             <select name="Budget" id="" required>
-                <option value="October 2023">October 2023</option>
-                <option value="February 2024">February 2024</option>
-                <option value="Thailand 2025">Thailand 2025</option>
+                {%for budget in budgets:%}
+                <option value="{{budget}}">{{budget}}</option>
+                {% endfor %}
             </select>
         </div>
         <div class="form-group">

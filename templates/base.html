@@ -28,6 +28,11 @@
         <li><a href="{{url_for('home')}}">HOME</a></li>
         <li><a href="{{url_for('wisdoms')}}">WISDOMS</a></li>
         <li><a href="{{url_for('friends')}}">FRIENDS</a></li>
+        {% elif session.get('pagename') == 'addExpenses' %}
+        <li><a href="{{url_for('home')}}">HOME</a></li>
+        <li><a href="{{url_for('friends')}}">FRIENDS</a></li>
+        <li><a href="{{url_for('wisdoms')}}">WISDOMS</a></li>
+
         {% endif %}
         <li><a href="{{url_for('logout')}}">LOGOUT</a></li>
         {% endif %}
