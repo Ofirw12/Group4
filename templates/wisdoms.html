@@ -1,0 +1,43 @@
+{% extends 'base.html'%}
+{% block title%}Wisdoms{% endblock %}
+{% block content %}
+<h1>Wisdoms</h1>
+
+<label>Expenses By Category</label>
+<form action="" class="quick-form form filter">
+    <div class="form-group">
+        <select name="expenseType" id="" required>
+            <option value="Education">Education</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Bills">Bills</option>
+        </select>
+        <input type="submit" value="Filter">
+    </div>
+</form>
+<table class ="expenses">
+    <thead>
+    <tr>
+        <th scope="col">Category</th>
+        <th scope="col">Expense Type</th>
+        <th scope="col">Date</th>
+        <th scope="col">Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="3">Total</td>
+        <td id="totalPrice"></td>
+    </tr>
+    </tfoot>
+</table>
+
+<p>You've spent 11% more than last month</p>
+<p>In the last year you've spent 30% more than the average</p>
+<p>Last month spending was 20% less than your friend Mika</p>
+
+
+<script src="{{url_for('static', filename='js/wisdoms.js')}}"></script>
+
+{% endblock %}

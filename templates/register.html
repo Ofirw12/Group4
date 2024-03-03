@@ -1,21 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Register</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+{% extends 'base.html'%}
+{% block title %}Register{% endblock %}
 
-<nav>
-    <ul>
-        <li><img class="logo" src="images/BudgetBunny.png" alt="Budget Bunny logo"></li>
-        <li><a href="login.html">LOGIN</a></li>
-    </ul>
-</nav>
+{% block content %}
 
 <h1>Register</h1>
 
@@ -57,7 +43,6 @@
     </div>
 
 </form>
-<footer> Made by Ofir Wysboom & Hila Ziegler ©</footer>
-<script src="register.js"></script>
-</body>
-</html>
+
+<script src="{{url_for('static', filename='js/register.js')}}"></script>
+{%endblock%}

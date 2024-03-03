@@ -1,24 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Friends</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-<nav>
-    <ul>
-        <li><img class="logo" src="images/BudgetBunny.png" alt="Budget Bunny logo"></li>
-        <li><a href="home.html">HOME</a></li>
-        <li><a href="wisdoms.html">WISDOMS</a></li>
-        <li><a href="newBudget.html">NEW BUDGET</a></li>
-        <li><a href="login.html">LOGOUT</a></li>
+{% extends 'base.html'%}
 
-    </ul>
-</nav>
+{% block title %}Friends{% endblock %}
+
+{%block content%}
 
 <h1>My Friends</h1>
 
@@ -95,7 +79,5 @@
     </tr>
     </tbody>
 </table>
-<footer> Made by Ofir Wysboom & Hila Ziegler ©</footer>
-<script src="/friends.js"></script>
-</body>
-</html>
+<script src="{{url_for('static',filename='js/friends.js')}}"></script>
+{% endblock %}
