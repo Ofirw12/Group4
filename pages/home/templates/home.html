@@ -4,8 +4,9 @@
 {% block content%}
 <label for="" id="date"></label>
 
-<h1 class="welcome-animation">Welcome</h1>
+<h1 class="welcome-animation">Welcome, {{name}}!</h1>
 <div class="grid-container">
+    {% if budgets%}
     <form action="{{url_for('home.home')}}" class="form add-expense" method="GET">
         <div class="form-group">
             <label for="">Choose Budget</label>
@@ -19,6 +20,10 @@
             <input type="submit" class="btn">
         </div>
     </form>
+    {% else %}
+<!--    grid this shit up-->
+    <h2>Please add a new budget from the button to the left</h2>
+    {% endif %}
 
     <a href="{{url_for('newBudget.newBudget')}}" class="btn first">Add a new budget</a>
     <a href="{{url_for('wisdoms.wisdoms')}}" class="btn Second">Wisdoms</a>

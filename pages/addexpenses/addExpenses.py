@@ -1,5 +1,5 @@
-from flask import Blueprint, render_template, session, redirect, url_for, flash
-
+from flask import Blueprint, render_template, session, redirect, url_for, flash, request
+from mongo_handler import *
 # addExpenses blueprint definition
 addExpensesBlueprint = Blueprint(
     'addExpenses',
@@ -11,7 +11,17 @@ addExpensesBlueprint = Blueprint(
 
 
 # Routes
-@addExpensesBlueprint.route('/add_expenses/<budget>', methods=['GET', 'POST'])
-def addExpenses(budget):
+@addExpensesBlueprint.route('/add_expenses/<budget_name>', methods=['GET', 'POST'])
+def addExpenses(budget_name):
     session['pagename'] = 'addExpenses'
-    return render_template('addExpenses.html', budget=budget)
+    if request.method == 'POST':
+        print(budget_name)
+        budget = get_budget_by_email_and_name(session['email'], budget_name)
+        create_new_expense(session['email'],
+                           budget['BudgetId'],
+                           datetime.strptime(request.form.get('date'), '%Y-%m-%d'),
+                           request.form.get('eType'),
+                           request.form.get('category'),
+                           int(request.form.get('price'))
+                           )
+    return render_template('addExpenses.html', budget_name=budget_name)

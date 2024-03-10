@@ -1,6 +1,6 @@
 
-from flask import Blueprint, render_template,session, redirect, url_for, flash , request
-
+from flask import Blueprint, render_template, session, redirect, url_for, flash, request
+from mongo_handler import *
 # about blueprint definition
 homeBlueprint = Blueprint(
     'home',
@@ -9,15 +9,14 @@ homeBlueprint = Blueprint(
     static_url_path='/home',
     template_folder='templates'
 )
-# will be replaced with sql later
-budgets = ["October 2023", "February 2024", "Thailand 2025"]
+
 
 @homeBlueprint.route("/")
 def home():
     session["pagename"] = 'home'
-    print(session["pagename"])
     if request.args.get('Budget'):
         budget = request.args.get('Budget')
-        return redirect(url_for('addExpenses.addExpenses', budget=budget))
-    return render_template("home.html", budgets=budgets)
+        return redirect(url_for('addExpenses.addExpenses', budget_name=budget))
+    budgets = get_budgets_names(session['email'])
+    return render_template("home.html", budgets=budgets, name=session['usersname'])
 
