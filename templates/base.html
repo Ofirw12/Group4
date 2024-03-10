@@ -12,26 +12,26 @@
         </li>
 
         {% if session.get('pagename') == 'login' or session.get('pagename') == 'register'%}
-        <li><a href="{{url_for('login')}}">LOGIN</a></li>
-        <li><a href="{{url_for('register')}}">REGISTER</a></li>
+        <li><a href="{{url_for('login.login')}}">LOGIN</a></li>
+        <li><a href="{{url_for('register.register')}}">REGISTER</a></li>
         {% else %}
         {% if session.get('pagename') == 'home' %}
-        <li><a href="{{url_for('friends')}}">FRIENDS</a></li>
+        <li><a href="{{url_for('friends.friends')}}">FRIENDS</a></li>
         {% elif session.get('pagename') == 'friends' %}
-        <li><a href="{{url_for('home')}}">HOME</a></li>
-        <li><a href="{{url_for('wisdoms')}}">WISDOMS</a></li>
-        <li><a href="{{url_for('newBudget')}}">NEW BUDGET</a></li>
+        <li><a href="{{url_for('home.home')}}">HOME</a></li>
+        <li><a href="{{url_for('wisdoms.wisdoms')}}">WISDOMS</a></li>
+        <li><a href="{{url_for('newBudget.newBudget')}}">NEW BUDGET</a></li>
         {% elif session.get('pagename') == 'wisdoms' %}
-        <li><a href="{{url_for('home')}}">HOME</a></li>
-        <li><a href="{{url_for('friends')}}">FRIENDS</a></li>
+        <li><a href="{{url_for('home.home')}}">HOME</a></li>
+        <li><a href="{{url_for('friends.friends')}}">FRIENDS</a></li>
         {% elif session.get('pagename') == 'newBudget' %}
-        <li><a href="{{url_for('home')}}">HOME</a></li>
-        <li><a href="{{url_for('wisdoms')}}">WISDOMS</a></li>
-        <li><a href="{{url_for('friends')}}">FRIENDS</a></li>
+        <li><a href="{{url_for('home.home')}}">HOME</a></li>
+        <li><a href="{{url_for('wisdoms.wisdoms')}}">WISDOMS</a></li>
+        <li><a href="{{url_for('friends.friends')}}">FRIENDS</a></li>
         {% elif session.get('pagename') == 'addExpenses' %}
-        <li><a href="{{url_for('home')}}">HOME</a></li>
-        <li><a href="{{url_for('friends')}}">FRIENDS</a></li>
-        <li><a href="{{url_for('wisdoms')}}">WISDOMS</a></li>
+        <li><a href="{{url_for('home.home')}}">HOME</a></li>
+        <li><a href="{{url_for('friends.friends')}}">FRIENDS</a></li>
+        <li><a href="{{url_for('wisdoms.wisdoms')}}">WISDOMS</a></li>
 
         {% endif %}
         <li><a href="{{url_for('logout')}}">LOGOUT</a></li>
