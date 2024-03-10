@@ -18,7 +18,7 @@ db = client['BudgetBunny']
 users_col = db['Users']
 budgets_col = db['Budgets']
 expenses_col = db['Expenses']
-friends_of_col = db['Friends']
+friends_col = db['Friends']
 customers_col = db['BudgetBunny']
 
 
@@ -96,12 +96,52 @@ def get_expenses_by_budget_id(budget_id):
     return list(expenses_col.find({'BudgetId': budget_id}))
 
 
+def get_expenses_by_email(email):
+    return list(expenses_col.find({'Email': email}))
+
+
+def delete_expense(expense_id):
+    expenses_col.delete_one({'ExpenseId': expense_id})
+
+
 def get_budget_by_email_and_name(email, name):
     budget = budgets_col.find_one({'Email': email, 'BudgetName': name})
     print(email, name)
     print(budget)
     print(budget['BudgetId'])
     return budget
+
+
+def get_categories(email):
+    li = []
+    categories = [expense['Category'] for expense in expenses_col.find({'Email': email})]
+    for category in categories:
+        if category not in li:
+            li.append(category)
+    return li
+
+ # Optional friends collection
+# def add_friend(my_email, friend_email):
+#     new_friend = {
+#         'Email1': my_email,
+#         'Email2': friend_email,
+#         'Status': 'Requested',
+#         'FriendsSince': ''
+#     }
+#     friends_col.insert_one(new_friend)
+#
+
+# def confrim_or_deny_friend_request(my_email, friend_email, response):
+#     friend_request = friends_col.find_one({'Email1': my_email, 'Email2': friend_email})
+#     if friend_request['Status'] == 'Requested':
+#         friends_col.update_one(
+#             {'Email1': my_email, 'Email2': friend_email},
+#             {'$set': {'Status': response, 'FriendsSince': datetime.today().strftime('%Y')}}
+#         )
+#
+# def get_friends()
+
+
 
 def test():
     pass

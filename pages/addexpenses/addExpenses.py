@@ -20,8 +20,14 @@ def addExpenses(budget_name):
         create_new_expense(session['email'],
                            budget['BudgetId'],
                            datetime.strptime(request.form.get('date'), '%Y-%m-%d'),
-                           request.form.get('eType'),
                            request.form.get('category'),
+                           request.form.get('eType'),
                            int(request.form.get('price'))
                            )
     return render_template('addExpenses.html', budget_name=budget_name)
+
+
+@addExpensesBlueprint.route('/delete_expense<int:expense_id>')
+def deleteExpense(expense_id):
+    delete_expense(expense_id)
+    return redirect(url_for('wisdoms.wisdoms'))

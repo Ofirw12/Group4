@@ -4,30 +4,68 @@
 <h1>Wisdoms</h1>
 
 <label>Expenses By Category</label>
-<form action="" class="quick-form form filter">
+<form action="{{url_for('wisdoms.wisdoms', categories=[], expenses=[], filter=filter)}}"
+      class="quick-form form filter" method="GET">
     <div class="form-group">
-        <select name="expenseType" id="" required>
-            <option value="Education">Education</option>
-            <option value="Shopping">Shopping</option>
-            <option value="Bills">Bills</option>
+        <select name="category" id="" required>
+            <option value="All">All</option>
+            {% for category in categories %}
+            <option value="{{category}}">{{category}}</option>
+            {% endfor %}
         </select>
         <input type="submit" value="Filter">
     </div>
 </form>
-<table class ="expenses">
+<table class="expenses">
     <thead>
     <tr>
+        <th scope="col">Delete</th>
         <th scope="col">Category</th>
         <th scope="col">Expense Type</th>
         <th scope="col">Date</th>
         <th scope="col">Price</th>
+
     </tr>
+    {% if filter == "All" %}
+    {% for expense in expenses %}
+    <tr class="expenseRow">
+        <td>
+                <a class="btn" type="submit" href="{{url_for('addExpenses.deleteExpense', expense_id=expense['ExpenseId'])}}">
+                    <img class="trash" src="{{url_for('wisdoms.static', filename='images/Trash.png')}}" alt="Trash can">
+                </a>
+        </td>
+        <td>{{expense['Category']}}</td>
+        <td>{{expense['ExpenseType']}}</td>
+        <td>{{expense['Date']}}</td>
+        <td class="price">{{expense['Price']}}</td>
+    </tr>
+    {% endfor %}
+    {% else %}
+    {% for expense in expenses %}
+    {% if expense['Category'] == filter %}
+    <tr class="expenseRow">
+        <td>
+            <form action="{{url_for('wisdoms.wisdoms', categories=[], expenses=[], filter=filter)}}"
+                  method="POST">
+                <button class="btn" type="submit">
+                    <img class="trash" src="{{url_for('wisdoms.static', filename='images/Trash.png')}}" alt="Trash can">
+                </button>
+            </form>
+        </td>
+        <td>{{expense['Category']}}</td>
+        <td>{{expense['ExpenseType']}}</td>
+        <td>{{expense['Date']}}</td>
+        <td class="price">{{expense['Price']}}</td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
     </thead>
     <tbody>
     </tbody>
     <tfoot>
     <tr>
-        <td colspan="3">Total</td>
+        <td colspan="4">Total</td>
         <td id="totalPrice"></td>
     </tr>
     </tfoot>

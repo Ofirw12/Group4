@@ -6,11 +6,6 @@ app = Flask(__name__)
 app.config.from_pyfile('settings.py')
 app.secret_key = SECRET_KEY
 
-
-# will be replaced with sql later
-budgets = ["October 2023", "February 2024", "Thailand 2025"]
-
-
 @app.route('/logout')
 def logout():
     session.clear()

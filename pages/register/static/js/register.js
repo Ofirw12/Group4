@@ -118,7 +118,11 @@ const validateForm = (form) => {
         sendMessage(message);
         return false;
     } else {
-        isValid = validatePassword(fields.password.value);
+        if (!validatePassword(fields.password.value))
+            return false;
+        else {
+            isValid = true;
+        }
     }
 
     // Name validation

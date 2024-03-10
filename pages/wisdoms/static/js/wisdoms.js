@@ -33,31 +33,34 @@ let expenses = [
 const filterBtn = document.querySelector('.filter');
 const WisdomsTable =document.querySelector('.expenses');
 
-const addRows =(list)=>{
-    list.forEach((expense) => {
-    const newRow = WisdomsTable.insertRow(1)
-    newRow.classList.add("expenseRow")
-    newRow.insertCell(0).textContent = expense.category;
-    newRow.insertCell(1).textContent = expense.expenseType;
-    newRow.insertCell(2).textContent = expense.date;
-    const price = newRow.insertCell(3);
-    price.textContent = expense.price;
-    price.classList.add('price');
-
-})
+// const addRows =(list)=>{
+//     list.forEach((expense) => {
+//     const newRow = WisdomsTable.insertRow(1)
+//     newRow.classList.add("expenseRow")
+//     newRow.insertCell(0).textContent = expense.category;
+//     newRow.insertCell(1).textContent = expense.expenseType;
+//     newRow.insertCell(2).textContent = expense.date;
+//     const price = newRow.insertCell(3);
+//     price.textContent = expense.price;
+//     price.classList.add('price');
+//
+// })
+//     sum();
+// }
+// addRows(expenses);
+// filterBtn.addEventListener('submit',(e)=>{
+//     e.preventDefault();
+//     const rows = document.querySelectorAll('.expenseRow');
+// rows.forEach((expenseRow) =>{
+//     expenseRow.remove();
+// })
+//     const form =document.querySelector('.quick-form.form.filter')
+//     let filtered = expenses.filter((expense)=> form.elements.expenseType.value === expense.category
+//     )
+//     addRows(filtered);
+// })
+window.addEventListener('load', (e) => {
     sum();
-}
-addRows(expenses);
-filterBtn.addEventListener('submit',(e)=>{
-    e.preventDefault();
-    const rows = document.querySelectorAll('.expenseRow');
-rows.forEach((expenseRow) =>{
-    expenseRow.remove();
-})
-    const form =document.querySelector('.quick-form.form.filter')
-    let filtered = expenses.filter((expense)=> form.elements.expenseType.value === expense.category
-    )
-    addRows(filtered);
-})
+});
 
 

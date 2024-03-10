@@ -50,8 +50,10 @@ nav li a {
     height: 59px;
     width: auto;
     border-radius: 10px;
+}
 
-
+.trash{
+    height: 20px;
 }
 
 #date {
