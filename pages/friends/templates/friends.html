@@ -5,8 +5,7 @@
 {%block content%}
 
 <h1>My Friends</h1>
-
-<table class="my-friends-list">
+<table class="my-friends-list" id="table_list">
     <thead>
     <tr>
         <th scope="col">Email</th>
@@ -16,11 +15,10 @@
     </tr>
     </thead>
     <tbody>
-    {%for friend_req in all_my_friends %}
-    {%if friend_req['Status'] == 'Approve'%}
+    {%for friend_req in approved %}
     {%if friend_req['Email1'] == my_email%}
     <tr>
-        <td>{{friend_req.Email2}}</td>
+        <td >{{friend_req.Email2}}</td>
         {% for user in users%}
         {% if user['Email'] == friend_req['Email2'] %}
         <td>{{user['FirstName']}}</td>
@@ -30,7 +28,7 @@
         <td>{{friend_req['FriendsSince']}}</td>
     </tr>
     {%elif friend_req['Email2'] == my_email%}
-    <tr>
+    <tr class= "friendRow">
         <td>{{friend_req.Email1}}</td>
         {% for user in users%}
         {% if user['Email'] == friend_req['Email1'] %}
@@ -41,13 +39,12 @@
         <td>{{friend_req['FriendsSince']}}</td>
     </tr>
     {%endif%}
-    {%endif%}
     {%endfor%}
     </tbody>
     <tfoot>
     <tr>
         <td colspan="3">Total friends</td>
-        <td id="total"></td>
+        <td id="total">{{requested|length}}</td>
     </tr>
     </tfoot>
 </table>
@@ -55,7 +52,7 @@
 <form action="" class="form">
     <h2>Add Friend</h2>
     <div class="form-group">
-        <label for="">Email</label>
+        <label>Email</label>
         <input type="email" name="email" required>
     </div>
     <div class="form-group">
@@ -75,15 +72,28 @@
     </tr>
     </thead>
     <tbody>
-    {%for friend_req in all_my_friends %}
-    {%if friend_req.Status == 'Requested'%}
-    {%if friend_req.Email1 == my_email%}
+    {%for friend_req in requested %}
+    {%if friend_req['Email1'] == my_email%}
     <tr>
-        <td>{{friend_req.Email2}}</td>
-        {% for user in users%}
-        {% if user.Email == friend_req.Email2 %}
-        <td>{{user.FirstName}}</td>
-        <td>{{user.LastName}}</td>
+        <td>{{friend_req['Email2']}}</td>
+        {% for user in users %}
+        {% if user['Email'] == friend_req['Email2'] %}
+        <td>{{user['FirstName']}}</td>
+        <td>{{user['LastName']}}</td>
+        {% endif %}
+        {% endfor %}
+        <td>
+            <a class="btn confirm" href="{{url_for('friends.friends_request', response='V', user=friend_req['Email2'])}}">V</a>
+            <a class="btn deny" href="{{url_for('friends.friends_request', response='X', user=friend_req['Email2'])}}">X</a>
+        </td>
+    </tr>
+    {% elif friend_req['Email2'] == my_email %}
+    <tr>
+        <td>{{friend_req['Email1']}}</td>
+        {% for user in users %}
+        {% if user['Email'] == friend_req['Email1'] %}
+        <td>{{user['FirstName']}}</td>
+        <td>{{user['LastName']}}</td>
         {% endif %}
         {% endfor %}
         <td>
@@ -96,58 +106,8 @@
             </form>
         </td>
     </tr>
-    {%elif friend.Email2 == my_email%}
-    <tr>
-        <td>{{friend_req.Email1}}</td>
-        {% for user in users%}
-        {% if user.Email == friend_req.Email1 %}
-        <td>{{user.FirstName}}</td>
-        <td>{{user.LastName}}</td>
-        {% endif %}
-        {% endfor %}
-            <td>
-        <form action="" class="quick-form form">
-            <select name="response" class="confirm-deny">
-                <option value="undifined">~</option>
-                <option value="confirm">V</option>
-                <option value="deny">X</option>
-            </select>
-        </form>
-    </td>
-    </tr>
-
-    {%endif%}
     {%endif%}
     {%endfor%}
-
-    <tr>
-        <td>Hanisroom@gmail.com</td>
-        <td>Hani</td>
-        <td>Nahmias</td>
-        <td>
-            <form action="" class="quick-form form">
-                <select name="response" class="confirm-deny">
-                    <option value="undifined">~</option>
-                    <option value="confirm">V</option>
-                    <option value="deny">X</option>
-                </select>
-            </form>
-        </td>
-    </tr>
-    <tr>
-        <td>nicebutterfly@gmail.com</td>
-        <td>Dudu</td>
-        <td>Zar</td>
-        <td>
-            <form action="" class="quick-form form">
-                <select name="response" class="confirm-deny">
-                    <option value="undifined">~</option>
-                    <option value="confirm">V</option>
-                    <option value="deny">X</option>
-                </select>
-            </form>
-        </td>
-    </tr>
     </tbody>
 </table>
 <script src="{{url_for('friends.static',filename='js/friends.js')}}"></script>

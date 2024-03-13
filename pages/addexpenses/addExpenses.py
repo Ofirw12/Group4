@@ -27,7 +27,7 @@ def addExpenses(budget_name):
     return render_template('addExpenses.html', budget_name=budget_name)
 
 
-@addExpensesBlueprint.route('/delete_expense<int:expense_id>')
+@addExpensesBlueprint.route('/delete_expense/<int:expense_id>')
 def deleteExpense(expense_id):
     delete_expense(expense_id)
     return redirect(url_for('wisdoms.wisdoms'))

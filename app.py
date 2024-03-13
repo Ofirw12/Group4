@@ -4,18 +4,12 @@ from mongo_handler import *
 
 app = Flask(__name__)
 app.config.from_pyfile('settings.py')
-# app.secret_key = SECRET_KEY
+
 
 @app.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for('login.login'))
-
-
-@app.route('/test')
-def mongotest():
-    test()
-    return redirect(url_for('home.home'))
 
 
 ##### Pages
