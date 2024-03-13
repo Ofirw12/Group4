@@ -19,6 +19,7 @@ def login():
             if user['Password'] == request.form.get('password'):
                 session['email'] = request.form.get('email')
                 session['usersname'] = user['FirstName']
+                session['logged_in'] = True
                 return redirect(url_for('home.home'))
             else:
                 # wrong password

@@ -14,9 +14,10 @@ homeBlueprint = Blueprint(
 @homeBlueprint.route("/")
 def home():
     session["pagename"] = 'home'
-    if request.args.get('Budget'):
-        budget = request.args.get('Budget')
-        return redirect(url_for('addExpenses.addExpenses', budget_name=budget))
-    budgets = get_budgets_names(session['email'])
-    return render_template("home.html", budgets=budgets, name=session['usersname'])
-
+    if 'logged_in' in session:
+        if request.args.get('Budget'):
+            budget = request.args.get('Budget')
+            return redirect(url_for('addExpenses.addExpenses', budget_name=budget))
+        budgets = get_budgets_names(session['email'])
+        return render_template("home.html", budgets=budgets, name=session['usersname'])
+    return redirect(url_for('login.login'))
