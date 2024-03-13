@@ -120,28 +120,45 @@ def get_categories(email):
             li.append(category)
     return li
 
- # Optional friends collection
-# def add_friend(my_email, friend_email):
-#     new_friend = {
-#         'Email1': my_email,
-#         'Email2': friend_email,
-#         'Status': 'Requested',
-#         'FriendsSince': ''
-#     }
-#     friends_col.insert_one(new_friend)
-#
+ #Optional friends collection
+def add_friend(my_email, friend_email):
+    new_friend = {
+        'Email1': my_email,
+        'Email2': friend_email,
+        'Status': 'Requested',
+        'FriendsSince': ''
+    }
+    friends_col.insert_one(new_friend)
 
-# def confrim_or_deny_friend_request(my_email, friend_email, response):
-#     friend_request = friends_col.find_one({'Email1': my_email, 'Email2': friend_email})
-#     if friend_request['Status'] == 'Requested':
-#         friends_col.update_one(
-#             {'Email1': my_email, 'Email2': friend_email},
-#             {'$set': {'Status': response, 'FriendsSince': datetime.today().strftime('%Y')}}
-#         )
-#
-# def get_friends()
+
+def confrim_or_deny_friend_request(my_email, friend_email, response):
+    friend_request = friends_col.find_one({'Email1': my_email, 'Email2': friend_email})
+    if friend_request:
+        if friend_request['Status'] == 'Requested':
+            friends_col.update_one(
+                {'Email1': my_email, 'Email2': friend_email},
+                {'$set': {'Status': response, 'FriendsSince': datetime.today().strftime('%Y')}}
+            )
+    if not friend_request:
+        friend_request = friends_col.find_one({'Email1': friend_email, 'Email2':my_email})
+    if friend_request:
+        if friend_request['Status'] == 'Requested':
+            friends_col.update_one(
+                {'Email1': friend_email, 'Email2': my_email},
+                {'$set': {'Status': response, 'FriendsSince': datetime.today().strftime('%Y')}}
+            )
+
+
+def get_friends(email):
+    friends_array1 = list(friends_col.find({'Email1': email}))
+    friends_array2 = list(friends_col.find({'Email2': email}))
+    all_my_friends = friends_array1+friends_array2
+    return all_my_friends
+
+
 
 
 
 def test():
     pass
+
