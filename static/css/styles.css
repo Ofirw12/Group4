@@ -260,6 +260,14 @@ td .quick-form {
     justify-self: center;
 
 }
+.grid-container .NoBudget{
+    grid-column: 3 / 5;
+    padding: 20px;
+    border-radius: 30px;
+    border: #205e60 2px solid;
+    background-color: rgba(139, 216, 220, 0.44);
+
+}
 
 .first {
     grid-column: 2 / 4;

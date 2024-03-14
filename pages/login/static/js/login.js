@@ -18,6 +18,11 @@ const sendMessage = (message) => {
     }, 4000)
 
 }
+window.addEventListener("load",(e)=>{
+    if(document.querySelector(".msg").textContent !== ""){
+        sendMessage(document.querySelector(".msg").textContent)
+    }
+        })
 
 const form = document.querySelector('form.login')
 //

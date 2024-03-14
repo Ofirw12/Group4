@@ -11,6 +11,7 @@ registerBlueprint = Blueprint(
 )
 
 
+
 @registerBlueprint.route('/register', methods=['GET', 'POST'])
 def register():
     session['pagename'] = 'register'

@@ -32,7 +32,7 @@
         <td>{{friend_req.Email1}}</td>
         {% for user in users%}
         {% if user['Email'] == friend_req['Email1'] %}
-        <td>{{user['FirstName']}}</td>
+        <td class= "friendRow">{{user['FirstName']}}</td>
         <td>{{user['LastName']}}</td>
         {% endif %}
         {% endfor %}
@@ -44,7 +44,7 @@
     <tfoot>
     <tr>
         <td colspan="3">Total friends</td>
-        <td id="total">{{requested|length}}</td>
+        <td id="total">{{my_approved_friends}}</td>
     </tr>
     </tfoot>
 </table>

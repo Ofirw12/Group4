@@ -12,6 +12,11 @@ const sendMessage = (message) => {
 
 }
 
+window.addEventListener("load",(e)=>{
+    if(document.querySelector(".msg").textContent !== ""){
+        sendMessage(document.querySelector(".msg").textContent)
+    }
+        })
 
 //Password validation
 const validatePassword = (password) => {

@@ -22,9 +22,10 @@ def login():
                 session['logged_in'] = True
                 return redirect(url_for('home.home'))
             else:
-                # wrong password
-                pass
+                msg = 'Incorrect password, Please try again'
+                return render_template("login.html", msg=msg)
         else:
-            # no email like this
-            pass
-    return render_template("login.html")
+            msg = 'Incorrect email, Please try again'
+            return render_template("login.html",msg=msg)
+
+    return render_template("login.html",msg="")

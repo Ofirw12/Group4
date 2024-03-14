@@ -31,7 +31,7 @@ def get_approved_friends(all_my_friends):
 def friends():
     session['pagename'] = 'friends'
     my_email = session['email']
-    all_my_friends = get_friends(my_email)
+    all_my_friends = get_friends("hilazieg@post.bgu.ac.il")
     approved = get_approved_friends(all_my_friends)
     requested = get_friend_requests(all_my_friends)
     users = []
@@ -39,15 +39,19 @@ def friends():
         if friend['Email1'] == my_email:
             if friend['Status'] == "Approved":
                 approved.append(get_user_by_email(friend["Email2"]))
+                users.append(get_user_by_email(friend["Email2"]))
             elif friend['Status'] == "Requested":
                 requested.append(get_user_by_email(friend["Email2"]))
+                users.append(get_user_by_email(friend["Email2"]))
         elif friend['Email2'] == my_email:
             if friend['Status'] == "Approved":
-                approved.append(get_user_by_email(friend["Email2"]))
+                approved.append(get_user_by_email(friend["Email1"]))
+                users.append(get_user_by_email(friend["Email1"]))
             elif friend['Status'] == "Requested":
-                requested.append(get_user_by_email(friend["Email2"]))
-        users.append(get_user_by_email(friend['Email1']))
-    return render_template("friends.html", approved=approved, requested=requested, my_email=my_email, users=users)
+                requested.append(get_user_by_email(friend["Email1"]))
+                users.append(get_user_by_email(friend["Email1"]))
+        # users.append(get_user_by_email(friend['Email1']))
+    return render_template("friends.html", approved=approved, requested=requested, my_email=my_email, users=users,my_approved_friends= len(approved) )
 
 
 @friendsBlueprints.route('/friends/<user>/<response>')
