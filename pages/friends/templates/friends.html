@@ -16,40 +16,24 @@
     </thead>
     <tbody>
     {%for friend_req in approved %}
-    {%if friend_req['Email1'] == my_email%}
     <tr>
-        <td >{{friend_req.Email2}}</td>
-        {% for user in users%}
-        {% if user['Email'] == friend_req['Email2'] %}
-        <td>{{user['FirstName']}}</td>
-        <td>{{user['LastName']}}</td>
-        {% endif %}
-        {% endfor %}
-        <td>{{friend_req['FriendsSince']}}</td>
+        <td>{{friend_req.email}}</td>
+        <td>{{friend_req['first_name']}}</td>
+        <td>{{friend_req['last_name']}}</td>
+        <td>{{friend_req['friends_since']}}</td>
     </tr>
-    {%elif friend_req['Email2'] == my_email%}
-    <tr class= "friendRow">
-        <td>{{friend_req.Email1}}</td>
-        {% for user in users%}
-        {% if user['Email'] == friend_req['Email1'] %}
-        <td class= "friendRow">{{user['FirstName']}}</td>
-        <td>{{user['LastName']}}</td>
-        {% endif %}
-        {% endfor %}
-        <td>{{friend_req['FriendsSince']}}</td>
-    </tr>
-    {%endif%}
     {%endfor%}
     </tbody>
     <tfoot>
     <tr>
         <td colspan="3">Total friends</td>
-        <td id="total">{{my_approved_friends}}</td>
+        <td id="total">{{approved|count}}</td>
     </tr>
     </tfoot>
 </table>
 
 <form action="" class="form">
+    <div class="msg">{{msg}}</div>
     <h2>Add Friend</h2>
     <div class="form-group">
         <label>Email</label>
@@ -73,40 +57,15 @@
     </thead>
     <tbody>
     {%for friend_req in requested %}
-    {%if friend_req['Email1'] == my_email%}
     <tr>
-        <td>{{friend_req['Email2']}}</td>
-        {% for user in users %}
-        {% if user['Email'] == friend_req['Email2'] %}
-        <td>{{user['FirstName']}}</td>
-        <td>{{user['LastName']}}</td>
-        {% endif %}
-        {% endfor %}
+        <td>{{friend_req.email}}</td>
+        <td>{{friend_req['first_name']}}</td>
+        <td>{{friend_req['last_name']}}</td>
         <td>
             <a class="btn confirm" href="{{url_for('friends.friends_request', response='V', user=friend_req['Email2'])}}">V</a>
             <a class="btn deny" href="{{url_for('friends.friends_request', response='X', user=friend_req['Email2'])}}">X</a>
         </td>
     </tr>
-    {% elif friend_req['Email2'] == my_email %}
-    <tr>
-        <td>{{friend_req['Email1']}}</td>
-        {% for user in users %}
-        {% if user['Email'] == friend_req['Email1'] %}
-        <td>{{user['FirstName']}}</td>
-        <td>{{user['LastName']}}</td>
-        {% endif %}
-        {% endfor %}
-        <td>
-            <form action="" class="quick-form form">
-                <select name="response" class="confirm-deny">
-                    <option value="undifined">~</option>
-                    <option value="confirm">V</option>
-                    <option value="deny">X</option>
-                </select>
-            </form>
-        </td>
-    </tr>
-    {%endif%}
     {%endfor%}
     </tbody>
 </table>

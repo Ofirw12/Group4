@@ -156,3 +156,4 @@ def get_friends(email):
     friends_array2 = list(friends_col.find({'Email2': email}))
     all_my_friends = friends_array1+friends_array2
     return all_my_friends
+
