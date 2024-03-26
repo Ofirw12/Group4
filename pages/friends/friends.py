@@ -11,7 +11,7 @@ friendsBlueprints = Blueprint(
 )
 
 
-def get_friend_requests(all_my_friends,my_email):
+def get_friend_requests(all_my_friends, my_email):
     friend_requests = []
     users_requests = []
     for friend in all_my_friends:
@@ -22,15 +22,15 @@ def get_friend_requests(all_my_friends,my_email):
             user = get_user_by_email(friend['Email2'])
             users_requests.append({
                 "email": friend['Email2'],
-                "first_name": user.FirstName,
-                "last_name": user.LastName,
+                "first_name": user['FirstName'],
+                "last_name": user['LastName'],
             })
         else:
             user = get_user_by_email(friend['Email1'])
             users_requests.append({
                 "email": friend['Email1'],
-                "first_name": user.FirstName,
-                "last_name": user.LastName,
+                "first_name": user['FirstName'],
+                "last_name": user['LastName'],
             })
     return users_requests
 
@@ -67,15 +67,25 @@ def get_approved_friends(all_my_friends,my_email):
 def friends():
     session['pagename'] = 'friends'
     my_email = session['email']
+    msg = ""
     if request.method == 'POST':
-        friend_to_request_email = request.form['email']
-        add_friend(my_email,friend_to_request_email)
-        msg = f"your request to {friend_to_request_email} was sent successfully"
+        user_email = request.form['email']
+        if user_email == my_email:
+            msg = "this is your own email don't be silly"
+        elif check_if_registered(user_email) :
+            # להכניס בדיקה שהמייל לא קיים כבר בחברים שלי,ושהמייל לא יוסף לטבלת בקשות חברות מחברים שלי
+            add_friend(my_email, user_email)
+            msg = "Your friend request has been sent successfully"
+        else:
+            msg = "Sorry that email is not registered"
+        # friend_to_request_email = request.form['email']
+        # add_friend(my_email,friend_to_request_email)
+        # msg = f"your request to {friend_to_request_email} was sent successfully"
+
     all_my_friends = get_friends(my_email)
     approved = get_approved_friends(all_my_friends, my_email)
     requested = get_friend_requests(all_my_friends, my_email)
-    return render_template("friends.html", approved=approved, requested=requested, my_approved_friends=len(approved))
-
+    return render_template("friends.html", approved=approved, requested=requested, my_approved_friends=len(approved), msg=msg)
 
 @friendsBlueprints.route('/friends/<user>/<response>')
 def friends_request(response, user):
@@ -84,3 +94,4 @@ def friends_request(response, user):
     elif response == "X":
         approve_or_reject_friend_request(session['email'], user, "Rejected")
     return redirect(url_for('friends.friends'))
+

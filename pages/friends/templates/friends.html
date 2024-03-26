@@ -32,7 +32,7 @@
     </tfoot>
 </table>
 
-<form action="" class="form">
+<form action="{{url_for('friends.friends')}}" class="form" method="post">
     <div class="msg">{{msg}}</div>
     <h2>Add Friend</h2>
     <div class="form-group">
@@ -62,12 +62,13 @@
         <td>{{friend_req['first_name']}}</td>
         <td>{{friend_req['last_name']}}</td>
         <td>
-            <a class="btn confirm" href="{{url_for('friends.friends_request', response='V', user=friend_req['Email2'])}}">V</a>
-            <a class="btn deny" href="{{url_for('friends.friends_request', response='X', user=friend_req['Email2'])}}">X</a>
+            <a class="btn confirm" href="{{url_for('friends.friends_request', response='V', user=friend_req['email'])}}">V</a>
+            <a class="btn deny" href="{{url_for('friends.friends_request', response='X', user=friend_req['email'])}}">X</a>
         </td>
     </tr>
     {%endfor%}
     </tbody>
 </table>
-<script src="{{url_for('friends.static',filename='js/friends.js')}}"></script>
+<script src="{{url_for('friends.static', filename='friend.js')}}"></script>
+
 {% endblock %}
